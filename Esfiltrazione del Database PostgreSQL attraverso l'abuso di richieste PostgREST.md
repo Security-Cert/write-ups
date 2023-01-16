@@ -30,7 +30,7 @@ Che cos'è realmente?
 
 Lasciatemi confessare che prima di quel momento non avevo mai visto applicazioni che lo utilizzassero, ed era abbastanza una novità per me, quindi mi sono armato di santa pazienza e, spinto da un naturale interesse, sono andato a leggere, e a studiare, la [documentazione ufficiale di PostgREST](https://postgrest.org/en/stable/).
 
-![](https://media.tenor.com/images/005e420889502d3385b5b62cd1bb1f8f/tenor.gif)
+![](https://media1.tenor.com/images/e976b2eeeb89ee2357c775149aa94b4f/tenor.gif?itemid=27407442f)
 
 Non ho intenzione di citarne ogni singola sezione, quindi vi suggerisco di andare a leggerlo direttamente qualora foste interessati, altrimenti aspettatevi un *tl;dr* qui sotto.
 

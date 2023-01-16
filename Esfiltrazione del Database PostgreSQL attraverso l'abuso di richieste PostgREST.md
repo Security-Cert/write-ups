@@ -30,7 +30,7 @@ Che cos'è realmente?
 
 Lasciatemi confessare che prima di quel momento non avevo mai visto applicazioni che lo utilizzassero, ed era abbastanza una novità per me, quindi mi sono armato di santa pazienza e, spinto da un naturale interesse, sono andato a leggere, e a studiare, la [documentazione ufficiale di PostgREST](https://postgrest.org/en/stable/).
 
-![](https://i.gifer.com/IHe.gif)
+![](https://media.tenor.com/images/005e420889502d3385b5b62cd1bb1f8f/tenor.gif)
 
 Non ho intenzione di citarne ogni singola sezione, quindi vi suggerisco di andare a leggerlo direttamente qualora foste interessati, altrimenti aspettatevi un *tl;dr* qui sotto.
 
@@ -50,7 +50,7 @@ Penso sia opportuno, a questo punto, specificare che l'utilizzo di PostgREST in 
 
 Chiarito questo, passiamo all'exploitation.
 
-![](https://i.gifer.com/8fCE.gif)
+![](https://media1.tenor.com/images/7ad6e94ce87d429665b63d94505f033f/tenor.gif?itemid=27407441)
 
 Intercettando nuovamente le richieste GET che vengono inviate dall'applicazione ogniqualvolta il contenuto delle dashboard viene fetchato, soffermiamoci sulla prima delle richieste che recuperano il contenuto dalle tabelle del database PostgreSQL. La prima era `/pg/vw_contract_with_orgs?select=*`. Dopo averla intercettata, ho inoltrato la richiesta al *Repeater* del web application proxy, per consentirmi di modificarla e testarla con rapidità.
 In seguito, ho modificato la query per puntare alla tabella `users` invece che a `vw_contract_with_orgs`, in modo che la richiesta finale risultasse esattamente qualcosa come `/pg/users?select=*`. Inviando questa richiesta, mi sono trovato di fronte a un primo clamoroso epic fail. Difatti, la risposta dell'applicazione è stata:
@@ -75,7 +75,7 @@ SELECT id FROM users;
 ```
 L'applicazione restituì il contenuto della colonna `id` della tabella del database `users`, che fa riferimento agli identificativi di tutti gli utenti esistenti a sistema.
 
-![](https://i.gifer.com/C6b.gif)
+![](https://media1.tenor.com/images/818a0a8c2d9c6eeaaa84e60cd21f4983/tenor.gif?itemid=27407440)
 
 Ho continuato, quindi, a concatenare altre colonne, come `email`, `updated_at`, `created_at`, dividendole con una virgola nelle richieste applicative, in questo modo:
 ```
@@ -85,7 +85,7 @@ E ho continuato fintanto che l'applicazione mi ha permesso di farlo da un punto 
 ```
 SELECT id,email,updated_at,created_at FROM users;
 ```
-![](db_exfiltration.PNG)
+![](https://i.imgur.com/fInXcwd.png)
 Tuttavia, considerando il fail dell'applicativo a livello *access control*, non avrei escluso che ci potessero essere anche altre tabelle interessanti da poter esfiltrare.
 
 ### Impatto
